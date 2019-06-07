@@ -1,0 +1,27 @@
+<form [formGroup]="formGroup" (ngSubmit)='onAddPost(frm)' #frm="ngForm" class="form">
+  <mat-card>
+
+      <mat-form-field class="form-element">
+          <input matInput placeholder="Emailaddress" formControlName="email">
+          <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+            {{ getErrorEmail() }}
+          </mat-error>
+        </mat-form-field>
+
+    <mat-form-field class="form-element">
+        <input type="text" formControlName="newPost.title" name="newPost.title" rows="5" cols="50" placeholder="Post title..." required  matInput #vNewPostTitle>
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <mat-form-field>
+      <textarea formControlName="newPost.content" class="form-element"   name="newPost.content" rows="5" cols="50" placeholder="Post content..." required  matInput #vNewPost></textarea>
+      <p *ngIf="vNewPost.invalid">Required</p>post
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <button type="submit" mat-raised-button color="accent">save</button>
+
+  </mat-card>
+</form>
